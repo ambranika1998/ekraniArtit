@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--Speakers section-->
+    <section id="speakers" class="speakers pt-120 brd-bottom bg-dark">
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 mb-100 text-center">
+                    <h1 class="title">Works with schools coordinated by Meli</h1>
+                    <p class="title-lead mt-10">We are bringing you the perfect combination of content and experience to ignite your <br>heart equip your mind and spark your skill.</p>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+        <div class="block-content">
+            <div class="col-sm-3 pd-0">
+                <div class="block-speaker">
+                    <div class="block-img overlay soft">
+                        <div class="background-img">
+                            <img src="{% static 'img/2.jpg' %}" alt="">
+                        </div>
+                        <div class="block-info-2">
+                            <p>
+                                <strong>Title 1</strong>
+                                <span>Description 1 </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 pd-0">
+                <div class="block-speaker">
+                    <div class="block-img overlay soft">
+                        <div class="background-img">
+                            <img src="{% static 'img/3.jpg' %}" alt="">
+                        </div>
+                        <div class="block-info-2">
+                            <p>
+                                <strong>Title 2</strong>
+                                <span>Description 2</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 pd-0">
+                <div class="block-speaker">
+                    <div class="block-img overlay soft">
+                        <div class="background-img">
+                            <img src="{% static 'img/4.jpg' %}" alt="">
+                        </div>
+                        <div class="block-info-2">
+                            <p>
+                                <strong>Title 3</strong>
+                                <span>Description 3</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 pd-0">
+                <div class="block-speaker">
+                    <div class="block-img overlay soft">
+                        <div class="background-img">
+                            <img src="{% static 'img/5.jpg' %}" alt="">
+                        </div>
+                        <div class="block-info-2">
+                            <p>
+                                <strong>Title 4</strong>
+                                <span>Description 4</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End speakers section-->
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/smooth-scroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/placeholders.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/venobox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/instafeed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    {#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbGQXiGt-6UAmOFFdSzYI-byeE7ewBuVM&callback=initializeMap"></script>#}
+{% endblock %}

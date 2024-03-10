@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_slider %}
+    <!--Main slider-->
+    <div class="main-slider slider">
+        <ul class="slides">
+            <li>
+                <div class="background-img">
+                    {% if website.background %}
+                        {% if website.background_type == 'video' %}
+                            <video autoplay muted loop src="{{ website.background }}"></video>
+                        {% endif %}
+                        {% if website.background_type == 'image' %}
+                            <img src="{{ website.background }}" alt="">
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--End main slider-->
+{% endblock %}
+{% block inner_hero %}
+    <!--Inner hero-->
+    <div class="inner-hero fade-out">
+        <!--Container-->
+        <div class="container hero-content">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    {% if not sub_title %}
+                        <h3 class="mb-10">Festivali</h3>
+                    {% else %}
+                        <h3 class="mb-10">{{ sub_title }}</h3>
+                    {% endif %}
+                    {% if not title %}
+                        <h1 class="large mb-10">Ekrani i Artit</h1>
+                    {% else %}
+                        <h1 class="large mb-10">{{ title }}</h1>
+                    {% endif %}
+                    {% if description %}
+                        <p class="uppercase ">{{ description }}</p>
+                    {% endif %}
+                    {% if button %}
+                        <a href="#register" class="but scroll "> {{ button }}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+    </div>
+    <!--End inner hero-->
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block content_footer %}
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/smooth-scroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/placeholders.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/venobox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/instafeed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    {#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbGQXiGt-6UAmOFFdSzYI-byeE7ewBuVM&callback=initializeMap"></script>#}
+{% endblock %}

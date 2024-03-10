@@ -1,0 +1,50 @@
+Copy code
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local development settings
+*.env
+*.sqlite3
+
+# Secret key
+secret_key.txt
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Database
+db.sqlite3
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled Python files
+*.pyc
+
+# Python virtual environment
+venv/
+env/
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Log files
+*.log
+logs/
+
+# Ignore migration files, as they are auto-generated
+**/migrations/
+
+# Ignore .DS_Store files on macOS
+.DS_Store
+
+# Ignore test database
+test_db.sqlite3

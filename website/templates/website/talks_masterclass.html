@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section id="accom" class="accom pt-120 pb-120 brd-bottom bg-dark">
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 mb-100 text-center ">
+                    <h1 class="title">Talks &amp; Masterclass </h1>
+                    <p class="title-lead mt-10 mb-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+        <!--Container-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-2 text-center">
+                    <div class="block-img">
+                        <div class="background-img">
+                            <img alt="" src="{% static 'img/8.jpg' %}" style="display: none;">
+                        </div>
+                    </div>
+                    <p class="mt-30">Title 1<br>
+                    <a href="#" class="link gradient-text mt-30">
+                        Read more
+                    </a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="block-img">
+                        <div class="background-img">
+                            <img alt="" src="{% static 'img/9.jpg' %}" style="display: none;">
+                        </div>
+                    </div>
+                   <p class="mt-30">Title 2<br>
+                    <a href="#" class="link gradient-text mt-30">
+                        Read more
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--End container-->
+    </section>
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/smooth-scroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/placeholders.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/venobox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/instafeed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    {#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbGQXiGt-6UAmOFFdSzYI-byeE7ewBuVM&callback=initializeMap"></script>#}
+{% endblock %}

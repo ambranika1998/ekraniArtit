@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--Tickest section-->
+    <section id="tickets" class="tickets pt-120 pb-120 brd-bottom bg-dark">
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 mb-130 text-center">
+                    <h1 class="title">Conference Tickets</h1>
+                    <p class="title-lead mt-10">If you want more bookings, then reserve your e-ticket for the ride of the year <br> Come join the world’s influencers and get answers. </p>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row vertical-align tickets">
+                <div class="col-sm-4 ">
+                    <h3 class="sub-title-0  mb-20"><span class="gradient-text">Your first conference</span><br>
+                        <span class="gradient-text">day is for free</span>
+                    </h3>
+                    <div class="review-slider flexslider">
+                        <ul class="slides">
+                            <li>
+                                <blockquote>“ It’s an unlikely setting for an exquisite dining experience—served up by a couple straight out of a rom-com plot.“</blockquote>
+                            </li>
+                            <li>
+                                <blockquote>“ The food is plentiful and delicious, it is all part of the "old world" sort of dining experience.“</blockquote>
+                            </li>
+                            <li>
+                                <blockquote>“ Huge portions, great food, fast service. This location obviously is always packed due to being in Times Sq.“</blockquote>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-8 ">
+                    <div class="col-sm-6">
+                        <ul class="block-tickets overlap">
+                            <li>
+                                <ul class="block-ticket">
+                                    <li class="block-price"><span class="price"><span class="cur">$</span>120</span><span class="block-type">1 Days ticket</span></li>
+                                    <li>Main Event speeche</li>
+                                    <li>Limited areas access</li>
+                                    <li>Lunch on day 1</li>
+                                    <li><a href="#" class="but mt-30"> Buy Ticket Now</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="block-tickets">
+                            <li>
+                                <ul class="block-ticket active">
+                                    <li class="block-price"><span class="price"><span class="cur">$</span>590</span><span class="block-type">All Days ticket</span></li>
+                                    <li>Main Events speeches</li>
+                                    <li>Access to all areas</li>
+                                    <li>All days lunch</li>
+                                    <li><a href="#" class="but mt-30"> Buy Ticket Now</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+    </section>
+    <!--End tickets section-->
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/smooth-scroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/placeholders.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/venobox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/instafeed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    {#    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbGQXiGt-6UAmOFFdSzYI-byeE7ewBuVM&callback=initializeMap"></script>#}
+{% endblock %}
