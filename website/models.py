@@ -164,7 +164,7 @@ class WebsiteMenuMedia(models.Model):
             allowed_extensions=['MOV', 'avi', 'mp4', 'webm', 'mkv', 'jpg', 'png', 'svg', 'gif', 'jpeg', 'jfif', 'pjpeg', 'pjp'])])
 
     def __str__(self):
-        return self.title
+        return self.get_menu_type_display() + ' ' + self.title
 
 
 class Staff(models.Model):

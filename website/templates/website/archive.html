@@ -42,94 +42,65 @@
         </div>
         <!--End container-->
         <div id="carouselControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
+            <div id="carousel-phone-id" hidden class="carousel-inner">
+                {% for element in media_list %}
+                    <div class="carousel-item {% if element.index == 1 %} {{ 'active' }} {% endif %}">
+                        <div class="container">
+                            <!--Row-->
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <ul class="block-gallery">
+                                        <li class="col-sm-2 ">
+                                            <a href="{{ element.media }}" class="venobox">
+                                                <div class="block-img">
+                                                    <div class="background-img">
+                                                        <img alt="" src="{{ element.media }}" style="display: none;">
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--End row-->
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="carousel-desktop-id" hidden class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="container">
-                        <!--Row-->
                         <div class="row">
-                            <div class="col-sm-12 ">
-                                <ul class="block-gallery">
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2017.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2017.jpg' %}" style="display: none;">
-                                                </div>
+                            <div class="col-sm-12" style="float: center">
+                                <ul class="block-gallery" style="display: flex; justify-content: center">
+                                    {% for element in media_list %}
+                                        {% if element.new_slide %}
+                                            </ul>
                                             </div>
-                                        </a>
-                                    </li>
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2018.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2018.jpg' %}" style="display: none;">
-                                                </div>
                                             </div>
-                                        </a>
-                                    </li>
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2019.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2019.jpg' %}" style="display: none;">
-                                                </div>
                                             </div>
-                                        </a>
-                                    </li>
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_20--.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_20--.jpg' %}" style="display: none;">
-                                                </div>
                                             </div>
-                                        </a>
-                                    </li>
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2021.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2021.jpg' %}" style="display: none;">
+                                            <div class="carousel-item">
+                                            <div class="container">
+                                            <div class="row">
+                                            <div class="col-sm-12">
+                                            <ul class="block-gallery" style="display: flex; justify-content: center">
+                                        {% endif %}
+                                        <li class="col-sm-2 ">
+                                            <a href="{{ element.media }}" class="venobox">
+                                                <div class="block-img">
+                                                    <div class="background-img">
+                                                        <img alt="" src="{{ element.media }}" style="display: none;">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--End row-->
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <!--Row-->
-                        <div class="row">
-                            <div class="col-sm-12 ">
-                                <ul class="block-gallery">
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2022.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2022.jpg' %}" style="display: none;">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="col-sm-2 ">
-                                        <a href="{% static 'img/ekrani_i_artit_2023.jpg' %}" class="venobox">
-                                            <div class="block-img">
-                                                <div class="background-img">
-                                                    <img alt="" src="{% static 'img/ekrani_i_artit_2023.jpg' %}" style="display: none;">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--End row-->
-                    </div>
-                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
             </div>
             <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -141,7 +112,15 @@
             </a>
         </div>
     </section>
-
+    <script>
+        if (window.innerWidth <= 767) {
+            document.getElementById('carousel-desktop-id').innerHTML = ''
+            document.getElementById('carousel-phone-id').removeAttribute('hidden')
+        } else {
+            document.getElementById('carousel-phone-id').innerHTML = ''
+            document.getElementById('carousel-desktop-id').removeAttribute('hidden')
+        }
+    </script>
 {% endblock %}
 {% block script_block %}
     <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>

@@ -83,8 +83,8 @@
     {% endblock %}
     <!--End hero section-->
     {% block content_footer %}
-        <footer class="pt-120  bg-dark">
-            <section class="subsribe text-center pb-120">
+        <footer class="pt-20  bg-dark">
+            <section class="subsribe text-center pb-20">
                 <!--Container-->
                 <div class="container">
                     <!--Row-->
@@ -101,10 +101,10 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <form method="post" class="subscribe-form form" action="#">
-                                <div class="col-sm-8">
-                                    <input placeholder="{{ website.subscribe_placeholder }}" value="" id="user-name" name="name" type="text">
+                                <div class="col-sm-8 pr-0">
+                                    <input placeholder="{{ website.subscribe_placeholder }}" value="" id="user-name" name="name" type="text" class="br-0">
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-4 pl-0">
                                     <input value="{{ website.subscribe_button }}" class="but  submit" type="submit">
                                 </div>
                                 <div class="col-sm-12">
@@ -135,14 +135,14 @@
                 <div class="container ">
                     <div class="row">
                         <div class="col-md-6">
-                            <p> &copy; {{ rights_reserved }}</p>
+                            <p> &copy; {{ website.rights_reserved }}</p>
                         </div>
                         <div class="col-md-6 ">
                             <ul class="block-legal">
-                                <li><a href="#">Privacy Policy</a>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Legal</a></li>
+{#                                <li><a href="#">Privacy Policy</a>#}
+{#                                <li><a href="#">Terms of Use</a></li>#}
+{#                                <li><a href="#">About</a></li>#}
+{#                                <li><a href="#">Legal</a></li>#}
                                 <li><span><a class="gradient-text scroll" href="#wrapper">Back To Top</a></span></li>
                             </ul>
                         </div>

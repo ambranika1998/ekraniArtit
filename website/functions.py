@@ -66,7 +66,7 @@ def get_website_information(request, language):
         'logo': '',
         'email': 'example@email.al',
         'phone_number': '+355 60 000 0000',
-        'subscribe_button': 'Abonohu' if language == '_al' else 'Art Screen',
+        'subscribe_button': 'Abonohu' if language == '_al' else 'Subscribe',
         'address': '3805 Edwards Rd Cincinnati, OH 45209 USA',
         'rights_reserved': '',
         'instagram': '',
@@ -89,7 +89,7 @@ def get_website_information(request, language):
         data['do_not_share_your_data'] = '* We don’t share your information with anyone.'
 
     key_simple_data = ['embed_location', 'email', 'phone_number', 'instagram', 'facebook', 'twitter', 'youtube', 'linkedin', 'other_social']
-    key_translated_data = ['title', 'slogan', 'description', 'address', 'rights_reserved']
+    key_translated_data = ['title', 'slogan', 'description', 'address', 'rights_reserved', 'subscribe_button']
     key_file_data = ['background', 'logo']
     key_ignore = ['background_type', 'logo_type']
 
@@ -178,11 +178,15 @@ def get_sponsor_information(request, language):
 def get_website_media_list(request, language, menu_type_choice):
     website_menu_media_list = WebsiteMenuMedia.objects.filter(menu_type=menu_type_choice, is_active=True)
     media_list = []
+    counter = 0
     for website_menu_media in website_menu_media_list:
+        counter += 1
         media_list.append(
             {
                 'title': getattr(website_menu_media, 'title' + language),
                 'media': os.path.join(HOST_MEDIA_ROOT + str(website_menu_media.media)),
+                'index': counter,
+                'new_slide': counter % 6 == 0
             }
         )
     return media_list

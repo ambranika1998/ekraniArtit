@@ -174,7 +174,7 @@ iframe {
 
 body {
     background: #111111;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Sans-Serif, Arial, serif;
     color: #cccccc;
     margin: 0;
     font-size: 14px;
@@ -216,11 +216,11 @@ p strong,
 li strong,
 input[type="text"],
 a.link {
-    font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Sans-Serif, Arial, serif;
 }
 .hero-content h3,
 .block-ticket .block-price .block-type {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Sans-Serif, Arial, serif;
 }
 em {
     font-style: italic;
@@ -425,11 +425,6 @@ input[type="submit"] textarea,
     position: relative;
     color: #ffffff;
     padding: 11px 40px;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: : 25px;
 }
 a.link {
     position: relative;
@@ -453,17 +448,17 @@ p a:after {
     background: rgb(57, 155, 255);
     /* Old browsers */
     
-    background: -moz-linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);
-    /* FF3.6-15 */
+    /*background: -moz-linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);*/
+    /*!* FF3.6-15 *!*/
     
-    background: -webkit-linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
+    /*background: -webkit-linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);*/
+    /*!* Chrome10-25,Safari5.1-6 *!*/
     
-    background: linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*background: linear-gradient(45deg, rgba(57, 155, 255, 1) 0%, rgba(238, 113, 249, 1) 100%);*/
+    /*!* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
     
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#399bff', endColorstr='#ee71f9', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
+    /*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#399bff', endColorstr='#ee71f9', GradientType=1);*/
+    /*!* IE6-9 fallback on horizontal gradient *!*/
 }
 /*End links*/
 /*Misc */
