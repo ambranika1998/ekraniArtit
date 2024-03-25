@@ -40,9 +40,6 @@ docker-compose.yml
 *.log
 logs/
 
-# Ignore migration files, as they are auto-generated
-**/migrations/
-
 # Ignore .DS_Store files on macOS
 .DS_Store
 
