@@ -99,6 +99,8 @@ class Menu(models.Model):
     menu_type = models.CharField(verbose_name=gettext_lazy("menu type"), max_length=30, choices=MenuTypeChoices.choices, unique=True)
     name = models.CharField(verbose_name=gettext_lazy('name'), max_length=128, blank=False, null=False)
     name_al = models.CharField(verbose_name=gettext_lazy('name albanian'), max_length=128, blank=False, null=False)
+    color = models.CharField(verbose_name=gettext_lazy('color'), max_length=7, blank=True, null=True)
+    background_color = models.CharField(verbose_name=gettext_lazy('background color'), max_length=7, default='#c0c0c0')
 
     def __str__(self):
         return self.get_menu_type_display()

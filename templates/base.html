@@ -50,7 +50,7 @@
                             {% if website.logo %}
                                 <h2>{{ website.title }}</h2>
 
-{#                                <img src="{{ website.logo }}" alt="Logo">#}
+                                {#                                <img src="{{ website.logo }}" alt="Logo">#}
                             {% elif website.title %}
                                 <h2>{{ website.title }}</h2>
                             {% endif %}
@@ -65,7 +65,14 @@
                             </div>
                             <ul>
                                 {% for key, value in menus.items %}
-                                    <li><a class="scroll" href="{% url key %}?lang={{ language }}">{{ value }}</a></li>
+                                    {% if value.is_active %}
+                                        <li style="color: {{ value.color }}; background: {{ value.background_color }}">
+                                            <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                    {% else %}
+                                        <li onmouseover="this.style.backgroundColor='{{ value.background_color }}'; this.style.color='{{ value.color }}';"
+                                            onmouseout="this.style.backgroundColor='';this.style.color='';">
+                                            <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>
                         </nav>
@@ -139,10 +146,10 @@
                         </div>
                         <div class="col-md-6 ">
                             <ul class="block-legal">
-{#                                <li><a href="#">Privacy Policy</a>#}
-{#                                <li><a href="#">Terms of Use</a></li>#}
-{#                                <li><a href="#">About</a></li>#}
-{#                                <li><a href="#">Legal</a></li>#}
+                                {#                                <li><a href="#">Privacy Policy</a>#}
+                                {#                                <li><a href="#">Terms of Use</a></li>#}
+                                {#                                <li><a href="#">About</a></li>#}
+                                {#                                <li><a href="#">Legal</a></li>#}
                                 <li><span><a class="gradient-text scroll" href="#wrapper">Back To Top</a></span></li>
                             </ul>
                         </div>

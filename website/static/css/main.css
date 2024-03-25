@@ -326,7 +326,8 @@ section.hero .inner-hero {
     display: inline-block;
     font-size: 13px;
     font-weight: 400;
-    margin-left: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .main-nav li a {
@@ -908,11 +909,11 @@ select.error {
 
 .block-gallery li:hover,
 .block-gallery li.active {
-    transform: scale(1.5);
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -o-transform: scale(1.5);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
     opacity: 1;
     z-index: 1;
     backface-visibility: hidden;
@@ -1118,8 +1119,8 @@ select.error {
 
     .main-nav li a {
         display: inline-block;
-        padding-top: 0;
-        padding-bottom: 12px;
+        padding-top: 6px;
+        padding-bottom:6px;
     }
 
     .main-nav li:first-child a {
@@ -1205,8 +1206,8 @@ select.error {
 
     .main-nav li a {
         display: inline-block;
-        padding-top: 0;
-        padding-bottom: 12px;
+        padding-top: 6px;
+        padding-bottom:6px;
     }
 
     .but {
@@ -1267,13 +1268,14 @@ select.error {
         display: inline-block;
         font-size: 13.2px;
         font-weight: 400;
-        margin-left: 35px;
+        padding-right: 15px;
+        padding-left: 15px;
     }
 
     .main-nav li a {
         color: #ffffff;
         display: block;
-        padding: 12px 0;
+        padding: 6px 6px;
         position: relative;
     }
 }
@@ -1310,8 +1312,8 @@ select.error {
 
     .main-nav li a {
         display: inline-block;
-        padding-top: 0;
-        padding-bottom: 12px;
+        padding-top: 6px;
+        padding-bottom:6px;
     }
 
     .main-nav li:first-child a {
@@ -1393,8 +1395,8 @@ select.error {
 
     .main-nav li a {
         display: inline-block;
-        padding-top: 0;
-        padding-bottom: 12px;
+        padding-top: 6px;
+        padding-bottom:6px;
     }
 
     .main-nav li:first-child a {
@@ -1534,8 +1536,8 @@ select.error {
 
     .main-nav li a {
         display: inline-block;
-        padding-top: 0;
-        padding-bottom: 12px;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
 
     .main-nav li:first-child a {

@@ -116,7 +116,12 @@ def get_menu(request, language):
     data = {}
     menus = Menu.objects.all()
     for menu in menus:
-        data[menu.menu_type] = getattr(menu, 'name' + language)
+        data[menu.menu_type] = {
+            'display_name': getattr(menu, 'name' + language),
+            'is_active': menu.menu_type in request.path_info,
+            'color': menu.color,
+            'background_color': menu.background_color
+        }
     return data
 
 
