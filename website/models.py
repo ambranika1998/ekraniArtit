@@ -101,6 +101,7 @@ class Menu(models.Model):
     name_al = models.CharField(verbose_name=gettext_lazy('name albanian'), max_length=128, blank=False, null=False)
     color = models.CharField(verbose_name=gettext_lazy('color'), max_length=7, blank=True, null=True)
     background_color = models.CharField(verbose_name=gettext_lazy('background color'), max_length=7, default='#c0c0c0')
+    order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
 
     def __str__(self):
         return self.get_menu_type_display()
@@ -160,6 +161,7 @@ class WebsiteMenuMedia(models.Model):
     list_description = models.CharField(verbose_name=gettext_lazy('list description'), max_length=1500, blank=True, null=True, help_text='separate with "next_description"')
     list_description_al = models.CharField(verbose_name=gettext_lazy('list description albanian'), max_length=1500, blank=True, null=True, help_text='separate with "next_description"')
     is_active = models.BooleanField(verbose_name=gettext_lazy('is active'), default=True)
+    order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
     media = models.FileField(
         verbose_name=gettext_lazy('main page background'), upload_to=document_file_directory_path,
         validators=[FileExtensionValidator(
@@ -191,6 +193,7 @@ class Staff(models.Model):
     twitter = models.URLField(gettext_lazy("Twitter"), max_length=200, db_index=True, null=True, blank=True)
     youtube = models.URLField(gettext_lazy("Youtube"), max_length=200, db_index=True, null=True, blank=True)
     linkedin = models.URLField(gettext_lazy("Linkedin"), max_length=200, db_index=True, null=True, blank=True)
+    order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
 
     def __str__(self):
         return self.name
@@ -215,6 +218,7 @@ class Sponsor(models.Model):
     twitter = models.URLField(gettext_lazy("Twitter"), max_length=200, db_index=True, null=True, blank=True)
     youtube = models.URLField(gettext_lazy("Youtube"), max_length=200, db_index=True, null=True, blank=True)
     linkedin = models.URLField(gettext_lazy("Linkedin"), max_length=200, db_index=True, null=True, blank=True)
+    order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
 
     def __str__(self):
         return self.title

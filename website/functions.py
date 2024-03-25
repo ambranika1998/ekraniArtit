@@ -114,7 +114,7 @@ def get_website_information(request, language):
 
 def get_menu(request, language):
     data = {}
-    menus = Menu.objects.all()
+    menus = Menu.objects.all().order_by('order')
     for menu in menus:
         data[menu.menu_type] = {
             'display_name': getattr(menu, 'name' + language),
@@ -139,7 +139,7 @@ def get_staff_information(request, language):
         data['title'] = 'Our Staff'
         data['description'] = 'We are bringing you the perfect combination of content and experience to ignite your heart equip your mind and spark your skill.'
 
-    staff_data = Staff.objects.all()
+    staff_data = Staff.objects.all().order_by('order')
     staff_list = []
     for staff in staff_data:
         staff_list.append(
@@ -167,7 +167,7 @@ def get_sponsor_information(request, language):
     else:
         data['title'] = 'Big up To Our Sponsors'
         data['description'] = 'For further info about sponsoring feel free to get in touch with us'
-    sponsors = Sponsor.objects.all()
+    sponsors = Sponsor.objects.all().order_by('order')
     sponsor_list = []
     for sponsor in sponsors:
         sponsor_list.append(
@@ -181,7 +181,7 @@ def get_sponsor_information(request, language):
 
 
 def get_website_media_list(request, language, menu_type_choice):
-    website_menu_media_list = WebsiteMenuMedia.objects.filter(menu_type=menu_type_choice, is_active=True)
+    website_menu_media_list = WebsiteMenuMedia.objects.filter(menu_type=menu_type_choice, is_active=True).order_by('order')
     media_list = []
     counter = 0
     for website_menu_media in website_menu_media_list:

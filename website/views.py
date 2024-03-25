@@ -31,7 +31,6 @@ def upcoming(request):
 
 def talks_masterclass(request):
     data = return_menu_data(request, MenuTypeChoices.TALKS_MASTERCLASS)
-    print(data)
     return render(request, 'website/talks_masterclass.html', data)
 
 
