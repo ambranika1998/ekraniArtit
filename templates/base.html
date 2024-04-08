@@ -19,6 +19,9 @@
     <link href="{% static 'css/carousel.min.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+
 
 </head>
 <body>
@@ -65,13 +68,22 @@
                             </div>
                             <ul>
                                 {% for key, value in menus.items %}
-                                    {% if value.is_active %}
-                                        <li style="color: {{ value.color }}; background: {{ value.background_color }}">
-                                            <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                    {% if key != 'language' %}
+                                        {% if value.is_active %}
+                                            <li style="color: {{ value.color }}; background: {{ value.background_color }}">
+                                                <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                        {% else %}
+                                            <li onmouseover="this.style.backgroundColor='{{ value.background_color }}'; this.style.color='{{ value.color }}';"
+                                                onmouseout="this.style.backgroundColor='';this.style.color='';">
+                                                <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                        {% endif %}
                                     {% else %}
-                                        <li onmouseover="this.style.backgroundColor='{{ value.background_color }}'; this.style.color='{{ value.color }}';"
-                                            onmouseout="this.style.backgroundColor='';this.style.color='';">
-                                            <a class="scroll" href="{% url key %}?lang={{ language }}">{{ value.display_name }}</a></li>
+                                        <li style="color: {{ menu.language.color }}; background: {{ menu.language.color.background_color }}">
+                                        <span style="padding: 12px 0;">
+                                            <span class="scroll" onclick="changeLanguage('al')" style="cursor: pointer;margin-right: 8px">AL</span> |
+                                            <span class="scroll" onclick="changeLanguage('en')" style="cursor: pointer;margin-left: 8px">EN</span>
+                                        </span>
+                                        </li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
@@ -108,11 +120,11 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <form method="post" class="subscribe-form form" action="#">
-                                <div class="col-sm-8 pr-0">
+                                <div class="col-sm-8 p-0">
                                     <input placeholder="{{ website.subscribe_placeholder }}" value="" id="user-name" name="name" type="text" class="br-0">
                                 </div>
-                                <div class="col-sm-4 pl-0">
-                                    <input value="{{ website.subscribe_button }}" class="but  submit" type="submit">
+                                <div class="col-sm-4 p-0">
+                                    <input style="background: {{ website.secondary_color }}" value="{{ website.subscribe_button }}" class="but  submit" type="submit">
                                 </div>
                                 <div class="col-sm-12">
                                     <p>{{ website.do_not_share_your_data }}</p>
@@ -133,6 +145,11 @@
                                 <li><a href="{{ website.twitter }}"><i class="icon-twitter"></i></a></li>
                                 <li><a href="{{ website.youtube }}"><i class="icon-youtube"></i></a></li>
                                 <li><a href="{{ website.instagram }}"><i class="icon-instagram-1"></i></a></li>
+                                <li><a href="{{ website.tiktok }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                        <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                                    </svg>
+                                </a></li>
                             </ul>
                         </div>
                     </div>
@@ -150,7 +167,7 @@
                                 {#                                <li><a href="#">Terms of Use</a></li>#}
                                 {#                                <li><a href="#">About</a></li>#}
                                 {#                                <li><a href="#">Legal</a></li>#}
-                                <li><span><a class="gradient-text scroll" href="#wrapper">Back To Top</a></span></li>
+                                <li><span><a class="scroll" style="color: {{ website.secondary_color }}" href="#wrapper">Back To Top</a></span></li>
                             </ul>
                         </div>
                     </div>
@@ -160,32 +177,19 @@
         </footer>
     {% endblock %}
 </div>
-{#<script>#}
-{#    function saveDataToLocalStorage(key, value) {#}
-{#        const data = localStorage.getItem(key);#}
-{#        if (!data) {#}
-{#            localStorage.setItem(key, JSON.stringify(value));#}
-{#        }#}
-{#    }#}
-{##}
-{#    function fetchDataFromServerAndSaveToLocal() {#}
-{#        fetch(`/website-content/?language=${localStorage.getItem('language')}`)#}
-{#            .then(response => response.json())#}
-{#            .then(data => {#}
-{#                for (let key in data) {#}
-{#                    saveDataToLocalStorage(key, data[key])#}
-{#                }#}
-{#            })#}
-{#            .catch(error => console.error('Error fetching data:', error));#}
-{#    }#}
-{##}
-{#    document.addEventListener('DOMContentLoaded', function () {#}
-{#        if (!localStorage.getItem('language')) {#}
-{#            saveDataToLocalStorage('language', 'en');#}
-{#        }#}
-{#        fetchDataFromServerAndSaveToLocal();#}
-{#    });#}
-{#</script>#}
+<script>
+    function changeLanguage(language) {
+        let url = window.location.href;
+        let newUrl;
+        if (url.includes('lang=')) {
+            newUrl = url.replace(/lang=[a-zA-Z]+/, 'lang=' + language);
+        } else {
+            let separator = url.includes('?') ? '&' : '?';
+            newUrl = url + separator + 'lang=' + language;
+        }
+        window.location.href = newUrl
+    }
+</script>
 
 {% block script_block %}
     <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>

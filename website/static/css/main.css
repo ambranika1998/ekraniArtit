@@ -326,8 +326,8 @@ section.hero .inner-hero {
     display: inline-block;
     font-size: 13px;
     font-weight: 400;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .main-nav li a {
@@ -1266,8 +1266,8 @@ select.error {
         display: inline-block;
         font-size: 13.2px;
         font-weight: 400;
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
 
     .main-nav li a {

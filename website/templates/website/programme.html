@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section id="schedule" class="schedule pt-120 pb-120">
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 mb-100 text-center">
+                    <h1 class="title">{{ title }}</h1>
+                    <p class="title-lead mt-10">{{ description }}</p>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="sub-title-0  mb-25"><span style="color: {{ website.secondary_color }}">{{ sub_title }}</span></h3>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+        <!--Container-->
+        <div class="container">
+            <!--Row-->
+            <div class="row">
+                <div class="col-sm-4 ">
+                    <!--Tabs-->
+                    <ul class="block-tabs">
+                        {% for day in programme_days %}
+                            <li class="{{ day.active_class }}">
+                                <i class="et-line-calendar"></i><strong>{{ day.day }}</strong> <span>- {{ day.date }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-8 ">
+                    <ul class="block-tab">
+                        {% for day in programme_days %}
+                            <li class="{{ day.active_class }}">
+                                <div class="block-date"><i class="et-line-calendar"></i><strong>{{ day.day }}</strong> <span>- {{ day.date }}</span></div>
+                                {% for programme in day.programmes %}
+                                    <div class="block-detail">
+                                        <span class="time">{{ programme.time }}</span>
+                                        <span class="topic">{{ programme.title }}</span>
+                                        <div class="block-text">
+                                            <p> <pre style="background: none; color: #cccccc">{{ programme.description }}</pre></p>
+                                            {% if language == 'en' %}
+                                                <span class="speaker"> <strong></strong> <a href="#" style="color: {{ website.secondary_color }}">Go todetails</a> </span>
+                                            {% elif language == 'al' %}
+                                                <span class="speaker"> <strong></strong> <a href="#" style="color: {{ website.secondary_color }}">Shiko detajet</a> </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!--End row-->
+        </div>
+        <!--End container-->
+    </section>
+{% endblock %}
+{% block script_block %}
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/smooth-scroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/placeholders.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/venobox.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/instafeed.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+{% endblock %}

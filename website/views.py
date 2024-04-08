@@ -2,7 +2,7 @@ import os
 
 from django.http import JsonResponse
 from django.shortcuts import render
-
+from django.core.mail import send_mail
 from ekraniArtit.settings import HOST_MEDIA_ROOT
 from website.functions import return_menu_data, get_website_information
 from website.models import WebsiteMenu, MenuTypeChoices, WebsiteInformation
@@ -57,3 +57,36 @@ def location(request):
 def archive(request):
     data = return_menu_data(request, MenuTypeChoices.ARCHIVE)
     return render(request, 'website/archive.html', data)
+
+
+def programme(request):
+    data = return_menu_data(request, MenuTypeChoices.PROGRAMME)
+    return render(request, 'website/programme.html', data)
+
+
+def subscribe_view(request):
+    if request.method == 'POST':
+        name = 'Kërkesë për abonim'
+        email = request.data.get('email', None)
+        message = 'Lutemi që të më abononi në newsleteri-in tuaj.'
+        send_mail(
+            'Kërkesë për abonim',
+            message,
+            'ambranika@hotmail.com',
+            ['ambranika1998@gmail.com'],
+            fail_silently=False,
+        )
+        return redirect('success')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+
+def sent_email_test():
+    send_mail(
+        'Kërkesë për abonim',
+        'Ky eshte nje test',
+        'ambranika@hotmail.com',
+        ['ambranika1998@gmail.com'],
+        fail_silently=False,
+    )

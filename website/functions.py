@@ -2,7 +2,7 @@ import os
 import uuid
 
 from ekraniArtit.settings import HOST_MEDIA_ROOT
-from website.models import WebsiteMenu, WebsiteInformation, get_file_type, Menu, MenuTypeChoices, Staff, Sponsor, WebsiteMenuMedia
+from website.models import WebsiteMenu, WebsiteInformation, get_file_type, Menu, MenuTypeChoices, Staff, Sponsor, WebsiteMenuMedia, DayDate
 
 
 def get_language(request):
@@ -44,6 +44,8 @@ def return_menu_data(request, menu_type_choice):
         data['staff'] = staff
         sponsor = get_sponsor_information(request, language[0])
         data['sponsor'] = sponsor
+    if menu_type_choice == MenuTypeChoices.PROGRAMME:
+        data['programme_days'] = get_programme_data(request, language[0])
     if language[0] == '_al':
         data['location_placeholder'] = 'Vendndodhja'
         data['date_placeholder'] = 'Datë'
@@ -76,7 +78,8 @@ def get_website_information(request, language):
         'linkedin': '',
         'other_social': '',
         'background_type': '',
-        'logo_type': ''
+        'logo_type': '',
+        'secondary_color': '#399BFF'
     }
 
     if language == '_al':
@@ -88,7 +91,7 @@ def get_website_information(request, language):
         data['subscribe_placeholder'] = 'Enter your email address'
         data['do_not_share_your_data'] = '* We don’t share your information with anyone.'
 
-    key_simple_data = ['embed_location', 'email', 'phone_number', 'instagram', 'facebook', 'twitter', 'youtube', 'linkedin', 'other_social']
+    key_simple_data = ['embed_location', 'email', 'phone_number', 'instagram', 'facebook', 'twitter', 'youtube', 'linkedin', 'other_social', 'secondary_color']
     key_translated_data = ['title', 'slogan', 'description', 'address', 'rights_reserved', 'subscribe_button']
     key_file_data = ['background', 'logo']
     key_ignore = ['background_type', 'logo_type']
@@ -131,13 +134,13 @@ def get_staff_information(request, language):
     if language == '_al':
         data['name'] = 'Stafi'
         data['sub_title'] = 'Njihuni me stafin tone'
-        data['title'] = 'Stafi yne'
-        data['description'] = 'Ne po ju sjellim kombinimin perfekt të përmbajtjes dhe përvojës për të ndezur tuajën zemra pajis mendjen tuaj dhe ndez aftësitë tuaja.'
+        data['title'] = 'Stafi'
+        data['description'] = ''
     else:
         data['name'] = 'Staff'
         data['sub_title'] = 'Meet our Staff'
-        data['title'] = 'Our Staff'
-        data['description'] = 'We are bringing you the perfect combination of content and experience to ignite your heart equip your mind and spark your skill.'
+        data['title'] = 'Staff'
+        data['description'] = ''
 
     staff_data = Staff.objects.all().order_by('order')
     staff_list = []
@@ -162,11 +165,11 @@ def get_sponsor_information(request, language):
     data = {}
 
     if language == '_al':
-        data['title'] = 'Bigup për sponsorët tanë'
-        data['description'] = 'Për më shumë informacion rreth sponsorizimit mos ngurroni të na kontaktoni'
+        data['title'] = 'Partnerët dhe Sponsorat'
+        data['description'] = ''
     else:
-        data['title'] = 'Big up To Our Sponsors'
-        data['description'] = 'For further info about sponsoring feel free to get in touch with us'
+        data['title'] = 'Partners and Sponsors'
+        data['description'] = ''
     sponsors = Sponsor.objects.all().order_by('order')
     sponsor_list = []
     for sponsor in sponsors:
@@ -195,3 +198,27 @@ def get_website_media_list(request, language, menu_type_choice):
             }
         )
     return media_list
+
+
+def get_programme_data(request, language):
+    programme_list = []
+    counter = 0
+    day_dates = DayDate.objects.all().order_by('order')
+    for day_date in day_dates:
+        info = {
+            'day': getattr(day_date, 'day' + language),
+            'date': getattr(day_date, 'date' + language),
+            'programmes': [],
+            'active_class': 'active' if programme_list == [] else ''
+        }
+        for programme in day_date.day_programmes.order_by('order'):
+            day_info = {
+                'id': programme.id,
+                'title': getattr(programme, 'title' + language),
+                'description': getattr(programme, 'description' + language),
+                'time': programme.time,
+                'active_class': 'active' if info['programmes'] == [] else ''
+            }
+            info['programmes'].append(day_info)
+        programme_list.append(info)
+    return programme_list
