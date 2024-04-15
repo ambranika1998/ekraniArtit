@@ -1118,7 +1118,7 @@ select.error {
     .main-nav li a {
         display: inline-block;
         padding-top: 6px;
-        padding-bottom:6px;
+        padding-bottom: 6px;
     }
 
     .main-nav li:first-child a {
@@ -1205,7 +1205,7 @@ select.error {
     .main-nav li a {
         display: inline-block;
         padding-top: 6px;
-        padding-bottom:6px;
+        padding-bottom: 6px;
     }
 
     .but {
@@ -1311,7 +1311,7 @@ select.error {
     .main-nav li a {
         display: inline-block;
         padding-top: 6px;
-        padding-bottom:6px;
+        padding-bottom: 6px;
     }
 
     .main-nav li:first-child a {
@@ -1394,7 +1394,7 @@ select.error {
     .main-nav li a {
         display: inline-block;
         padding-top: 6px;
-        padding-bottom:6px;
+        padding-bottom: 6px;
     }
 
     .main-nav li:first-child a {
@@ -1470,6 +1470,10 @@ select.error {
     }
 
     .block-map {
+        display: none;
+    }
+
+    .hide-for-phones {
         display: none;
     }
 
@@ -1627,6 +1631,10 @@ select.error {
     }
 
     .block-map {
+        display: none;
+    }
+
+    .hide-for-phones {
         display: none;
     }
 

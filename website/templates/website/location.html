@@ -4,25 +4,38 @@
     <!--Contact section-->
     <section id="location" class="location pt-200 pb-200 brd-bottom bg-dark">
         <div class="block-map" style="top: 50px;">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2961.9294552943293!2d19.51390007557026!3d42.06613145362136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134e00feb8d93f51%3A0x8a3339b5fc79681e!2sArt%20House!5e0!3m2!1sen!2s!4v1708276846294!5m2!1sen!2s"
-                    width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {% if default_src %}
+                <iframe src="{{ default_src }}" id="locationIFrame"
+                        width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {% endif %}
         </div>
         <!--Container-->
         <div class="container block-contact">
             <!--Row-->
             <div class="row">
                 <div class="col-md-5 col-md-offset-7 col-sm-5 col-sm-offset-7">
-                    <h1 class="title">Contact Info </h1>
-                    <p class="title-lead mt-10 mb-50">Dear guests, you are welcomed to dine with us at Tasty restaurant. Have a pleasant dining experience. </p>
+                    <h1 class="title"> {{ title }} </h1>
+                    <p class="title-lead mt-10 mb-50">
+                        {% if description %}{{ description }}{% endif %}
+                    </p>
                 </div>
                 <div class="col-md-5 col-md-offset-7 col-sm-5 col-sm-offset-7">
                     <div class="block-info-3">
                         <p>
-                            3805 Edwards Rd <br>
-                            Cincinnati, OH 45209 USA<br><br>
-                            Phone: (513) 352-3209 <br>
-                            Fax: (513) 352-6220 <br>
-                            Email : <a href="mailto:contact@events.com" class="gradient-text">contact@events.com</a>
+                            {% for location in locations %}
+                                <div>
+                                    {{ location.address }}
+                                    {% if language == 'al' %}
+                                        <span class="hide-for-phones" role="button" style="color: {{ website.secondary_color }}; font-size: 12px;" onclick="setLocation(`{{ location.embedded_address }}`)"> Shiko në hartë </span>
+                                    {% else %}
+                                        <span class="hide-for-phones" role="button" style="color: {{ website.secondary_color }}; font-size: 12px;" onclick="setLocation(`{{ location.embedded_address }}`)"> Show in Map </span>
+                                    {% endif %}
+                                </div>
+                                <br>
+                            {% endfor %}
+                        <br>
+                        Phone: {{ website.phone_number }} <br>
+                        Email : <a href="mailto:{{ website.email }}" style="color: {{ website.secondary_color }}" >{{ website.email }}</a>
                         </p>
                     </div>
                 </div>
@@ -30,6 +43,13 @@
             <!--End row-->
         </div>
         <!--End container-->
+
+        <script>
+            function setLocation(location) {
+                element = document.getElementById('locationIFrame')
+                element.setAttribute('src', location)
+            }
+        </script>
     </section>
     <!--End contact section-->
 {% endblock %}

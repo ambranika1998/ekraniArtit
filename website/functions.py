@@ -2,7 +2,7 @@ import os
 import uuid
 
 from ekraniArtit.settings import HOST_MEDIA_ROOT
-from website.models import WebsiteMenu, WebsiteInformation, get_file_type, Menu, MenuTypeChoices, Staff, Sponsor, WebsiteMenuMedia, DayDate
+from website.models import WebsiteMenu, WebsiteInformation, get_file_type, Menu, MenuTypeChoices, Staff, Sponsor, WebsiteMenuMedia, DayDate, Location
 
 
 def get_language(request):
@@ -46,6 +46,9 @@ def return_menu_data(request, menu_type_choice):
         data['sponsor'] = sponsor
     if menu_type_choice == MenuTypeChoices.PROGRAMME:
         data['programme_days'] = get_programme_data(request, language[0])
+    if menu_type_choice == MenuTypeChoices.LOCATION:
+        data['locations'] = get_locations_list(request, language[0])
+        data['default_src'] = data['locations'][0]['embedded_address'] if data['locations'] else None
     if language[0] == '_al':
         data['location_placeholder'] = 'Vendndodhja'
         data['date_placeholder'] = 'Datë'
@@ -222,3 +225,15 @@ def get_programme_data(request, language):
             info['programmes'].append(day_info)
         programme_list.append(info)
     return programme_list
+
+
+def get_locations_list(request, language):
+    location_list = []
+    locations = Location.objects.all().order_by('order')
+    for location in locations:
+        info = {
+            'address': getattr(location, 'address' + language),
+            'embedded_address': location.embedded_address,
+        }
+        location_list.append(info)
+    return location_list

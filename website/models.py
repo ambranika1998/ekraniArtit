@@ -202,6 +202,21 @@ class Staff(models.Model):
         return self.name
 
 
+class Location(models.Model):
+    class Meta:
+        verbose_name = gettext_lazy("location")
+        verbose_name_plural = gettext_lazy("locations")
+        db_table = "location"
+
+    address = models.CharField(verbose_name=gettext_lazy('address'), max_length=200, blank=False, null=False)
+    address_al = models.CharField(verbose_name=gettext_lazy('address albanian'), max_length=200, blank=False, null=False)
+    embedded_address = models.URLField(gettext_lazy("embedded address"), max_length=500, db_index=True, null=True, blank=True)
+    order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
+
+    def __str__(self):
+        return self.address
+
+
 class Sponsor(models.Model):
     class Meta:
         verbose_name = gettext_lazy("sponsor")
@@ -211,7 +226,7 @@ class Sponsor(models.Model):
     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
     slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500,default='')
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='')
     media = models.FileField(
         verbose_name=gettext_lazy('media'), upload_to=document_file_directory_path, help_text=gettext_lazy('Size 456x210'),
         validators=[FileExtensionValidator(
@@ -260,3 +275,24 @@ class DayProgrammes(models.Model):
 
     def __str__(self):
         return self.title + ' ' + self.title
+
+# class DayProgrammesMedia(models.Model):
+#     class Meta:
+#         verbose_name = gettext_lazy("day programme")
+#         verbose_name_plural = gettext_lazy("day programmes")
+#         db_table = "day_programme"
+#
+#     day_programme = models.ForeignKey(DayProgrammes, related_name='day_programme_medias', on_delete=models.CASCADE, verbose_name=gettext_lazy('day programme media'))
+#     time = models.CharField(verbose_name=gettext_lazy("time"), max_length=128)
+#     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
+#     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
+#     description = models.TextField(verbose_name=gettext_lazy("description"), max_length=1000, default='')
+#     description_al = models.TextField(verbose_name=gettext_lazy("description albanian"), max_length=1000, default='')
+#     media = models.FileField(
+#         verbose_name=gettext_lazy('main page background'), upload_to=document_file_directory_path,
+#         validators=[FileExtensionValidator(
+#             allowed_extensions=['MOV', 'avi', 'mp4', 'webm', 'mkv', 'jpg', 'png', 'svg', 'gif', 'jpeg', 'jfif', 'pjpeg', 'pjp'])])
+#     order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
+#
+#     def __str__(self):
+#         return self.title + ' ' + self.title
