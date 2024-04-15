@@ -22,7 +22,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
-
 </head>
 <body>
 <!-- Preloader -->
@@ -141,15 +140,20 @@
                     <div class="row">
                         <div class="col-sm-12 text-center">
                             <ul class="block-social mt-20">
-                                <li><a href="{{ website.facebook }}"><i class="icon-facebook"></i></a></li>
-                                <li><a href="{{ website.twitter }}"><i class="icon-twitter"></i></a></li>
-                                <li><a href="{{ website.youtube }}"><i class="icon-youtube"></i></a></li>
-                                <li><a href="{{ website.instagram }}"><i class="icon-instagram-1"></i></a></li>
-                                <li><a href="{{ website.tiktok }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
-                                        <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
-                                    </svg>
-                                </a></li>
+                                {% if website.facebook %}
+                                    <li><a href="{{ website.facebook }}" target="_blank"><i class="icon-facebook"></i></a></li>{% endif %}
+                                {% if website.twitter %}
+                                    <li><a href="{{ website.twitter }}" target="_blank"><i class="icon-twitter"></i></a></li>{% endif %}
+                                {% if website.youtube %}
+                                    <li><a href="{{ website.youtube }}" target="_blank"><i class="icon-youtube"></i></a></li>{% endif %}
+                                {% if website.instagram %}
+                                    <li><a href="{{ website.instagram }}" target="_blank"><i class="icon-instagram-1"></i></a></li>{% endif %}
+                                {% if website.tiktok %}
+                                    <li><a href="{{ website.tiktok }}" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                            <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                                        </svg>
+                                    </a></li> {% endif %}
                             </ul>
                         </div>
                     </div>

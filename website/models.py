@@ -43,10 +43,10 @@ class WebsiteInformation(models.Model):
 
     title = models.CharField(verbose_name=gettext_lazy('title'), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy('title albanian'), max_length=128, blank=False, null=False)
-    slogan = models.CharField(verbose_name=gettext_lazy('title'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('title'), max_length=500, default='')
-    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='')
-    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='')
+    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='', blank=True)
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='', blank=True)
+    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='', blank=True)
+    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='', blank=True)
     embed_location = models.CharField(verbose_name=gettext_lazy('embed location'), max_length=500, blank=True, null=True)
     background = models.FileField(
         verbose_name=gettext_lazy('main page background'), upload_to=document_file_directory_path,
@@ -66,6 +66,7 @@ class WebsiteInformation(models.Model):
     twitter = models.URLField(gettext_lazy("Twitter"), max_length=200, db_index=True, unique=True, blank=True)
     youtube = models.URLField(gettext_lazy("Youtube"), max_length=200, db_index=True, unique=True, blank=True)
     linkedin = models.URLField(gettext_lazy("Linkedin"), max_length=200, db_index=True, unique=True, blank=True)
+    tiktok = models.URLField(gettext_lazy("Tiktok"), max_length=200, db_index=True, unique=True, blank=True)
     other_social = models.URLField(gettext_lazy("Other Social"), max_length=200, db_index=True, unique=True, blank=True)
     secondary_color = models.CharField(verbose_name=gettext_lazy('secondary color'), max_length=7, blank=True, null=True)
     is_active = models.BooleanField(verbose_name=gettext_lazy('is active'), default=True, help_text=gettext_lazy('Only one should be active otherwise system does not know which one is correct'))
@@ -120,15 +121,15 @@ class WebsiteMenu(models.Model):
     name_al = models.CharField(verbose_name=gettext_lazy('name albanian'), max_length=128, blank=False, null=False)
     menu_type = models.CharField(verbose_name=gettext_lazy("menu type"), max_length=30, choices=MenuTypeChoices.choices, unique=True)
 
-    sub_title = models.CharField(verbose_name=gettext_lazy("sub title"), max_length=128, default='')
-    sub_title_al = models.CharField(verbose_name=gettext_lazy("sub title albanian"), max_length=128, default='')
+    sub_title = models.CharField(verbose_name=gettext_lazy("sub title"), max_length=128, default='', blank=True)
+    sub_title_al = models.CharField(verbose_name=gettext_lazy("sub title albanian"), max_length=128, default='', blank=True)
 
     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=True, null=True)
     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=True, null=True)
-    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='')
-    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='')
-    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='')
+    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='', blank=True)
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='', blank=True)
+    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='', blank=True)
+    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='', blank=True)
     button = models.CharField(verbose_name=gettext_lazy("button"), max_length=128, blank=True, null=True)
     button_al = models.CharField(verbose_name=gettext_lazy("button albanian"), max_length=128, blank=True, null=True)
 
@@ -157,12 +158,12 @@ class WebsiteMenuMedia(models.Model):
     menu_type = models.CharField(verbose_name=gettext_lazy("menu type"), max_length=30, choices=MenuTypeChoices.choices)
     title = models.CharField(verbose_name=gettext_lazy('title'), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy('title albanian'), max_length=128, blank=False, null=False)
-    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='')
-    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1500, default='')
-    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1500, default='')
-    list_description = models.CharField(verbose_name=gettext_lazy('list description'), max_length=1500, default='', help_text='separate with "next_description"')
-    list_description_al = models.CharField(verbose_name=gettext_lazy('list description albanian'), max_length=1500, default='', help_text='separate with "next_description"')
+    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='', blank=True)
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='', blank=True)
+    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1500, default='', blank=True)
+    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1500, default='', blank=True)
+    list_description = models.CharField(verbose_name=gettext_lazy('list description'), max_length=1500, default='', blank=True, help_text='separate with "next_description"')
+    list_description_al = models.CharField(verbose_name=gettext_lazy('list description albanian'), max_length=1500, default='', blank=True, help_text='separate with "next_description"')
     is_active = models.BooleanField(verbose_name=gettext_lazy('is active'), default=True)
     order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
     media = models.FileField(
@@ -183,10 +184,10 @@ class Staff(models.Model):
     name = models.CharField(verbose_name=gettext_lazy('name'), max_length=128, blank=False, null=False)
     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
-    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='')
-    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='')
-    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='')
+    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='', blank=True)
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='', blank=True)
+    description = models.CharField(verbose_name=gettext_lazy('description'), max_length=1000, default='', blank=True)
+    description_al = models.CharField(verbose_name=gettext_lazy('description albanian'), max_length=1000, default='', blank=True)
     media = models.FileField(
         verbose_name=gettext_lazy('media'), upload_to=document_file_directory_path, help_text=gettext_lazy('Size 1900x1200'),
         validators=[FileExtensionValidator(
@@ -225,8 +226,8 @@ class Sponsor(models.Model):
 
     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
-    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='')
-    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='')
+    slogan = models.CharField(verbose_name=gettext_lazy('slogan'), max_length=500, default='', blank=True)
+    slogan_al = models.CharField(verbose_name=gettext_lazy('slogan albanian'), max_length=500, default='', blank=True)
     media = models.FileField(
         verbose_name=gettext_lazy('media'), upload_to=document_file_directory_path, help_text=gettext_lazy('Size 456x210'),
         validators=[FileExtensionValidator(
@@ -269,8 +270,8 @@ class DayProgrammes(models.Model):
     time = models.CharField(verbose_name=gettext_lazy("time"), max_length=128)
     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
-    description = models.TextField(verbose_name=gettext_lazy("description"), max_length=1000, default='')
-    description_al = models.TextField(verbose_name=gettext_lazy("description albanian"), max_length=1000, default='')
+    description = models.TextField(verbose_name=gettext_lazy("description"), max_length=1000, default='', blank=True)
+    description_al = models.TextField(verbose_name=gettext_lazy("description albanian"), max_length=1000, default='', blank=True)
     order = models.PositiveIntegerField(verbose_name=gettext_lazy('order'), default=1)
 
     def __str__(self):
@@ -286,8 +287,8 @@ class DayProgrammes(models.Model):
 #     time = models.CharField(verbose_name=gettext_lazy("time"), max_length=128)
 #     title = models.CharField(verbose_name=gettext_lazy("title"), max_length=128, blank=False, null=False)
 #     title_al = models.CharField(verbose_name=gettext_lazy("title albanian"), max_length=128, blank=False, null=False)
-#     description = models.TextField(verbose_name=gettext_lazy("description"), max_length=1000, default='')
-#     description_al = models.TextField(verbose_name=gettext_lazy("description albanian"), max_length=1000, default='')
+#     description = models.TextField(verbose_name=gettext_lazy("description"), max_length=1000, default='', blank=True)
+#     description_al = models.TextField(verbose_name=gettext_lazy("description albanian"), max_length=1000, default='', blank=True)
 #     media = models.FileField(
 #         verbose_name=gettext_lazy('main page background'), upload_to=document_file_directory_path,
 #         validators=[FileExtensionValidator(

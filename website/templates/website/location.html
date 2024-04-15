@@ -35,7 +35,7 @@
                             {% endfor %}
                         <br>
                         Phone: {{ website.phone_number }} <br>
-                        Email : <a href="mailto:{{ website.email }}" style="color: {{ website.secondary_color }}" >{{ website.email }}</a>
+                        Email : <a href="mailto:{{ website.email }}" style="color: {{ website.secondary_color }}">{{ website.email }}</a>
                         </p>
                     </div>
                 </div>
@@ -43,6 +43,23 @@
             <!--End row-->
         </div>
         <!--End container-->
+
+        <style>
+            .hide-for-phones {
+            }
+
+            @media only screen and (min-width: 480px) and (max-width: 767px) {
+                .hide-for-phones {
+                    display: none !important;
+                }
+            }
+
+            @media only screen and (max-width: 479px) {
+                .hide-for-phones {
+                    display: none !important;
+                }
+            }
+        </style>
 
         <script>
             function setLocation(location) {

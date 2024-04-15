@@ -844,6 +844,10 @@ select.error {
 
 /* Contact section*/
 
+.hide-for-phones {
+    font-weight: bold;
+}
+
 .block-map {
     width: 50%;
     height: 100%;
@@ -1474,7 +1478,7 @@ select.error {
     }
 
     .hide-for-phones {
-        display: none;
+        display: none !important;
     }
 
     .subscribe-form input[type="text"] {
@@ -1635,7 +1639,7 @@ select.error {
     }
 
     .hide-for-phones {
-        display: none;
+        display: none !important;
     }
 
     .col-sm-4.col-sm-offset-2.text-center {

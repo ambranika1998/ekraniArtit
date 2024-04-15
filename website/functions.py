@@ -79,6 +79,7 @@ def get_website_information(request, language):
         'twitter': '',
         'youtube': '',
         'linkedin': '',
+        'tiktok': '',
         'other_social': '',
         'background_type': '',
         'logo_type': '',
@@ -94,7 +95,7 @@ def get_website_information(request, language):
         data['subscribe_placeholder'] = 'Enter your email address'
         data['do_not_share_your_data'] = '* We don’t share your information with anyone.'
 
-    key_simple_data = ['embed_location', 'email', 'phone_number', 'instagram', 'facebook', 'twitter', 'youtube', 'linkedin', 'other_social', 'secondary_color']
+    key_simple_data = ['embed_location', 'email', 'phone_number', 'instagram', 'facebook', 'twitter', 'youtube', 'linkedin', 'tiktok', 'other_social', 'secondary_color']
     key_translated_data = ['title', 'slogan', 'description', 'address', 'rights_reserved', 'subscribe_button']
     key_file_data = ['background', 'logo']
     key_ignore = ['background_type', 'logo_type']
